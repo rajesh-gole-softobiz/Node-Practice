@@ -34,6 +34,13 @@ app.post('/user',(req,res)=>{
     res.send(`welcome ${name}`);
 })
 
+//http request with form data (from client side to server)
+app.post('/users',()=>{
+    const name = req.body.name;
+    const age = req.body.age;
+    res.send(`Welcome ${name}, Your Lucky No. is ${age}`);
+})
+
 app.use((req,res)=>{
     res.send(`<h1>404 page not found!</h1>`)
 })
