@@ -5,6 +5,14 @@ app.get('/',(req,res)=>{
     res.send(`<h1>Home Page</h1>`);
 })
 
+// Response Cookie and Clear Cookie
+app.get('/login',(req,res)=>{
+    res.cookie('fname','rajesh');
+    res.cookie('lname','gole');
+    res.clearCookie('fname');
+    res.end();
+})
+
 // Sending HTML file as response
 //Register
 app.use('/register',(req,res)=>{
@@ -37,12 +45,12 @@ app.use('/index',(req,res)=>{
 // });
 
 //Response Redirect
-app.use('/signup',(req,res)=>{
-    res.redirect('/register');
-});
-app.use('/signin',(req,res)=>{
-    res.redirect('/login');
-});
+// app.use('/signup',(req,res)=>{
+//     res.redirect('/register');
+// });
+// app.use('/signin',(req,res)=>{
+//     res.redirect('/login');
+// });
 
 app.use((req,res)=>{
     res.send(`<h1>404 Not Found</h1>`);
