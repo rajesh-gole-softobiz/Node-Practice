@@ -14,6 +14,9 @@ const hostname= '127.0.0.1'
 
 //Create a server
 const myServer = http.createServer((req,res)=>{
+    //To Create Status Code
+    res.writeHead(202, {'Content-Type':'text/html'});
+    res.write('<h1>Hello</h1>')
     res.end('<h1>Server is running...</h1>');
 
 });
