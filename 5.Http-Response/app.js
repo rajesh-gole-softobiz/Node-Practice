@@ -5,24 +5,38 @@ app.get('/',(req,res)=>{
     res.send(`<h1>Home Page</h1>`);
 })
 
+// Sending HTML file as response
 //Register
 app.use('/register',(req,res)=>{
-    res.status(200).json({
-        messag: "This is Register Page",
-        statusCode: 200,
-    });
-});
+    res.statusCode = 200;
+    res.sendFile(__dirname+'/views/register.html');
+})
+// Home page
+app.use('/index',(req,res)=>{
+    res.statusCode = 200;
+    res.sendFile(__dirname+'/views/index.html');
+})
 
 
-//Login
-app.use('/login',(req,res)=>{
-    res.status(200).json({
-        message: "This is login page",
-        statusCode: 200,
-    });
-});
+// Sending JSON data and status code as response
+//Register
+// app.use('/register',(req,res)=>{
+//     res.status(200).json({
+//         messag: "This is Register Page",
+//         statusCode: 200,
+//     });
+// });
 
-//Redirect
+
+// //Login
+// app.use('/login',(req,res)=>{
+//     res.status(200).json({
+//         message: "This is login page",
+//         statusCode: 200,
+//     });
+// });
+
+//Response Redirect
 app.use('/signup',(req,res)=>{
     res.redirect('/register');
 });
