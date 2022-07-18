@@ -1,5 +1,6 @@
 const express = require('express');
 const app=express();
+const bodyParser = require("body-parser");
 
 
 // app.get('/',(req,res)=>{
@@ -18,11 +19,19 @@ const app=express();
 // });
 
 // http request using header (postman)
-app.get('/',(req,res)=>{
-    const id = req.header('id');
-    const name =req.header('name');
+// app.get('/',(req,res)=>{
+//     const id = req.header('id');
+//     const name =req.header('name');
 
-    res.send(`<h1>Student id is ${id} and name is ${name}</h1>`);
+//     res.send(`<h1>Student id is ${id} and name is ${name}</h1>`);
+// })
+
+//http request with JSON data (postman)
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.post('/user',(req,res)=>{
+    const name = req.body.name;
+    res.send(`welcome ${name}`);
 })
 
 app.use((req,res)=>{
