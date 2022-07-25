@@ -3,6 +3,8 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+require('./config/db')
+
 const userRouter = require('./routes/user.route');
 
 //To access the form data
