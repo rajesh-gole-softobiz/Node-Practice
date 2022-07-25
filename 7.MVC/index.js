@@ -3,11 +3,13 @@ const app = express();
 const PORT = 3000;
 
 const userRouter = require('./routes/users.route');
+const productRouter = require('./routes/products.route');
 
 // To access body and find data
 app.use(express.urlencoded({extended:true}))
 //To use user router
 app.use(userRouter);
+app.use(productRouter);
 
 // Models Part
 
