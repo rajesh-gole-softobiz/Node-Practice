@@ -5,6 +5,18 @@ const PORT = 3000;
 // To access body and find data
 app.use(express.urlencoded({extended:true}))
 
+//
+const users = [
+    {
+        name: "Rajesh Gole",
+        age : 26
+    },
+    {
+        name: "abc xyz",
+        age : 31
+    },
+]
+
 // Creating Form
 const htmlForm = `
 <form method="POST" actions="/users">
@@ -20,7 +32,17 @@ app.get('/users',(req,res)=>{
 })
 
 app.post('/users',(req,res)=>{
-    
+    const name = req.body.name;
+    const age = Number(req.body.age);
+    const user = {
+        name,
+        age
+    }
+    users.push(user)
+    res.status(201).json({
+        success: true,
+        users
+    })
 })
 
 app.use((req,res,next)=>{
