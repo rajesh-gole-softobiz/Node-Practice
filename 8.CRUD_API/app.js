@@ -13,6 +13,20 @@ app.get('/',(req,res)=>{
     res.sendFile(__dirname+"/./views/index.html")
 })
 
+//For invalid route
+app.use((req,res,next)=>{
+    res.status(404).json({
+        message: 'route not found',
+    })
+})
+
+// Server error handling
+app.use((err, req,res,next)=>{
+    res.status(500).json({
+        message: 'something broke',
+    })
+})
+
 
 module.exports = app;
 
